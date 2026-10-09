@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#154e48">
+<title>Resilienz-Kompass · Persönlicher Selbstcheck</title>
+<style>
+:root{--ink:#183d38;--muted:#526963;--green:#154e48;--light:#edf4ef;--line:#cbdad1}*{box-sizing:border-box}body{margin:0;background:#f5f5ef;color:var(--ink);font:17px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:850px;margin:auto;padding:35px 20px 65px}h1{font-size:clamp(2rem,7vw,3.3rem);line-height:1.1;margin:12px 0 20px;letter-spacing:-.04em}h2{line-height:1.3}p{margin:12px 0}.eyebrow{text-transform:uppercase;font-size:12px;font-weight:750;letter-spacing:.16em}.sub{color:var(--muted)}.card,fieldset{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;margin:20px 0;min-width:0}.notice{background:var(--light);border-radius:12px;padding:16px;font-size:14px}button{background:var(--green);color:white;border:0;border-radius:12px;padding:15px 24px;font:inherit;font-weight:650;cursor:pointer;min-height:48px}button.secondary{background:white;color:var(--green);border:1px solid var(--green)}button:hover{filter:brightness(.94)}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #ca8c22;outline-offset:4px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}.progress-wrap{position:sticky;top:0;z-index:2;background:#f5f5ef;padding:12px 0;border-bottom:1px solid var(--line)}progress{width:100%;height:10px;accent-color:var(--green)}#progressText{font-size:14px}.question{font-weight:650;margin:0 0 16px}.number{font-size:12px;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}.options{display:grid;gap:8px}.option{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:10px;padding:12px;min-height:48px;cursor:pointer;font-size:15px}.option:has(input:checked){background:var(--light);border-color:var(--green);font-weight:650}.option input{width:20px;height:20px;accent-color:var(--green);flex-shrink:0}.missing{border:2px solid #9a3f22}.error{color:#913718;font-weight:600}.score{font-size:clamp(2.5rem,8vw,4rem);font-weight:750;line-height:1.2}.score small{font-size:1rem;font-weight:400;color:var(--muted)}.badge{display:inline-block;background:var(--light);padding:7px 13px;border-radius:30px;font-weight:650}.bar-row{margin:20px 0}.bar-heading{display:flex;justify-content:space-between;gap:12px;font-size:15px;margin-bottom:7px}.track{background:var(--light);height:12px;border-radius:20px;overflow:hidden}.fill{background:var(--green);height:100%;border-radius:20px}textarea{display:block;width:100%;font:inherit;padding:12px;border:1px solid var(--line);border-radius:10px;margin:8px 0 20px;resize:vertical}footer{font-size:13px;color:var(--muted);margin-top:30px} [hidden]{display:none!important}@media(min-width:650px){.options{grid-template-columns:repeat(5,1fr)}.option{flex-direction:column;align-items:flex-start;font-size:13px}.option input{margin-bottom:4px}}@media print{body{background:white;font-size:11pt}main{padding:0;max-width:none}.actions,footer,#intro,#check{display:none!important}.card{break-inside:avoid;padding:15px;margin:12px 0}textarea{min-height:60px}h1{font-size:26pt}.score{font-size:30pt}}
+</style>
+</head>
+<body><main>
+<header><div class="eyebrow">Selbstreflexion · 21 Aussagen · ca. 5 Minuten</div><h1>Dein Resilienz-Kompass</h1><p class="sub">Was gibt dir Halt – und was möchtest du stärken?</p></header>
+<section id="intro" class="card" aria-labelledby="introTitle"><h2 id="introTitle">Ein Moment für dich</h2><p>Wie gehst du aktuell mit Belastungen, Veränderungen und schwierigen Situationen um? Dieser Selbstcheck hilft dir, deine persönlichen Resilienzressourcen einzuschätzen.</p><p>Denke an die <strong>vergangenen vier Wochen</strong> – beruflich und privat. Antworte so, wie du dich tatsächlich erlebst. Es gibt keine richtigen oder falschen Antworten.</p><p>Dein Ergebnis bleibt bei dir. Du musst es im Training nicht offenlegen.</p><div class="notice"><strong>Ein Selbstcheck, kein Diagnosetest.</strong> Die Aussagen sind eigenständig formuliert. Der Selbstcheck ist nicht wissenschaftlich validiert oder normiert und ist kein Test von Jutta Heller.</div><div class="actions"><button id="start" type="button">Selbstcheck starten</button></div></section>
+<section id="check" hidden aria-label="Fragebogen"><div class="progress-wrap"><div id="progressText" aria-live="polite">0 von 21 Aussagen beantwortet</div><progress id="progress" value="0" max="21" aria-label="Beantwortete Aussagen"></progress></div><form id="form"><div id="questions"></div><p id="error" class="error" role="alert" hidden></p><button type="submit">Mein Ergebnis anzeigen</button></form></section>
+<section id="result" hidden aria-labelledby="resultTitle"><h2 id="resultTitle" tabindex="-1">Deine persönliche Auswertung</h2><div class="card"><p class="eyebrow">Gesamteinschätzung</p><div id="score" class="score"></div><p id="level" class="badge"></p><p class="sub">Nach deiner aktuellen Selbsteinschätzung</p><p id="interpretation"></p><div class="notice">Die Einstufung beruht auf deinen Antworten und frei gewählten Trainingsgrenzen: 21–49 Punkte = niedrig, 50–77 = mittel, 78–105 = hoch. Sie ist keine psychologische Diagnose. Dein Ergebnis kann sich mit deiner aktuellen Lebenssituation verändern.</div></div><div class="card"><h2>Deine sieben Resilienzbereiche</h2><p class="sub">Je Bereich 3 bis 15 Punkte. Die Balken zeigen die Punktzahl; sie sind keine Prozentangabe deiner Resilienz.</p><div id="profile"></div><p id="strengths"></p><p id="development"></p><p class="sub">Bei gleichen Werten sind mehrere Bereiche gleichauf. Entscheide selbst, welcher für dich gerade besonders relevant ist.</p></div><div class="actions"><button id="print" type="button">Drucken / als PDF speichern</button><button id="edit" class="secondary" type="button">Antworten bearbeiten</button><button id="restart" class="secondary" type="button">Neu beginnen</button></div><p class="sub">Du kannst dein Ergebnis auch als Screenshot sichern. Für eine PDF wähle im Druckdialog „Als PDF speichern“, sofern dein Gerät diese Funktion anbietet.</p></section>
+<noscript><div class="card">Bitte aktiviere JavaScript in deinem Browser, damit du den Selbstcheck ausfüllen und auswerten kannst.</div></noscript>
+<footer>Die Antworten werden nur im Arbeitsspeicher dieses Browserfensters verarbeitet. Die Seite nutzt keine Cookies, keine Analysewerkzeuge und keine externen Schriftarten. Beim Neuladen gehen deine Eingaben verloren. Beim Online-Aufruf kann der Hosting-Anbieter technische Zugriffsdaten verarbeiten.</footer>
+</main>
+<script>
+'use strict';
+const groups=['Akzeptanz','Optimismus','Selbstwirksamkeit','Eigenverantwortung','Netzwerkorientierung','Lösungsorientierung','Zukunftsorientierung'];
+const statements=[
+'Wenn ich eine Situation nicht verändern kann, gelingt es mir, sie zunächst so anzunehmen, wie sie ist.',
+'Nach einem Rückschlag kann ich meine Aufmerksamkeit wieder auf das richten, was jetzt möglich ist.',
+'Ich kann unangenehme Gefühle zulassen, ohne mich dafür abzuwerten.',
+'Auch in schwierigen Situationen halte ich eine positive Entwicklung für möglich.',
+'Wenn etwas schiefläuft, nehme ich weiterhin wahr, was in meinem Leben gut funktioniert.',
+'Nach Enttäuschungen gelingt es mir, wieder Zuversicht zu entwickeln.',
+'Bei Herausforderungen vertraue ich darauf, mit meinen Fähigkeiten etwas bewirken zu können.',
+'Ich kann mich an Situationen erinnern, in denen ich Schwierigkeiten aus eigener Kraft bewältigt habe.',
+'Auch wenn eine Aufgabe schwierig erscheint, traue ich mir einen ersten Schritt zu.',
+'In schwierigen Situationen erkenne ich, welchen Teil ich selbst beeinflussen kann.',
+'Ich übernehme Verantwortung für meine Entscheidungen und mein Verhalten.',
+'Wenn ich merke, dass mir etwas nicht guttut, setze ich eine Grenze oder verändere mein Verhalten.',
+'Ich habe Menschen, an die ich mich bei Belastungen wenden kann.',
+'Wenn ich Unterstützung brauche, spreche ich das offen an.',
+'Ich pflege Kontakte zu Menschen, die mir Kraft und Rückhalt geben.',
+'Bei Problemen richte ich meine Aufmerksamkeit auf mögliche nächste Schritte.',
+'Wenn ein Weg nicht funktioniert, suche ich nach einer anderen Möglichkeit.',
+'Ich kann ein großes Problem in kleinere, bearbeitbare Schritte aufteilen.',
+'Ich habe eine Vorstellung davon, was mir in der nächsten Zeit wichtig ist.',
+'Aus meinen Zielen leite ich konkrete, realistische Schritte ab.',
+'Bei meinen Planungen berücksichtige ich, was ich brauche, um langfristig gesund und handlungsfähig zu bleiben.'
+];
+const choices=['Trifft überhaupt nicht zu','Trifft eher nicht zu','Trifft teilweise zu','Trifft eher zu','Trifft vollständig zu'];
+const $=id=>document.getElementById(id);
+function assess(values){
+ if(values.length!==21||values.some(v=>!Number.isInteger(v)||v<1||v>5))throw new Error('21 vollständige Antworten erforderlich.');
+ const total=values.reduce((a,b)=>a+b,0);
+ return {total,level:total<=49?'Niedrige Resilienz':total<=77?'Mittlere Resilienz':'Hohe Resilienz',scores:groups.map((name,i)=>({name,value:values.slice(i*3,i*3+3).reduce((a,b)=>a+b,0)}))};
+}
+statements.forEach((statement,i)=>{
+ const field=document.createElement('fieldset');field.id='q'+i;
+ const legend=document.createElement('legend');legend.className='number';legend.textContent='Aussage '+(i+1)+' / 21';field.append(legend);
+ const p=document.createElement('p');p.className='question';p.id='statement'+i;p.textContent=statement;field.append(p);field.setAttribute('aria-describedby',p.id);
+ const options=document.createElement('div');options.className='options';
+ choices.forEach((choice,j)=>{const label=document.createElement('label');label.className='option';const input=document.createElement('input');input.type='radio';input.name='answer'+i;input.value=j+1;input.setAttribute('aria-label',statement+' – '+choice);const text=document.createElement('span');text.textContent=choice;label.append(input,text);options.append(label);});field.append(options);$('questions').append(field);
+});
+function answers(){return statements.map((_,i)=>{const selected=document.querySelector('input[name="answer'+i+'"]:checked');return selected?Number(selected.value):null;});}
+function show(id){['intro','check','result'].forEach(x=>$(x).hidden=x!==id);}
+$('start').onclick=()=>{show('check');document.querySelector('input').focus();};
+$('form').addEventListener('change',()=>{const count=answers().filter(v=>v!==null).length;$('progress').value=count;$('progressText').textContent=count+' von 21 Aussagen beantwortet';answers().forEach((v,i)=>{if(v!==null)$('q'+i).classList.remove('missing');});$('error').hidden=true;});
+$('form').addEventListener('submit',e=>{e.preventDefault();const values=answers();if(values.includes(null)){const missing=values.filter(v=>v===null).length;$('error').textContent='Bitte beantworte noch '+missing+' '+(missing===1?'Aussage.':'Aussagen.');$('error').hidden=false;values.forEach((v,i)=>$('q'+i).classList.toggle('missing',v===null));$('q'+values.indexOf(null)).querySelector('input').focus();return;}
+ const result=assess(values);$('score').replaceChildren(document.createTextNode(result.total+' '));const small=document.createElement('small');small.textContent='/ 105 Punkte';$('score').append(small);$('level').textContent=result.level;
+ $('interpretation').textContent=result.total<=49?'Du schätzt mehrere deiner Resilienzressourcen derzeit eher niedrig ein. Wähle zunächst einen Bereich, in dem dich ein kleiner Schritt oder zusätzliche Unterstützung entlasten könnte.':result.total<=77?'Du erkennst bereits hilfreiche Ressourcen bei dir. Gleichzeitig gibt es Bereiche, die du gezielt stärken kannst. Nutze eine vorhandene Stärke als Ausgangspunkt.':'Du schätzt viele deiner Resilienzressourcen als gut ausgeprägt ein. Überlege, was dir dabei hilft und wie du diese Ressourcen auch in belastenden Phasen erhalten kannst.';
+ $('profile').replaceChildren();result.scores.forEach(item=>{const row=document.createElement('div');row.className='bar-row';const head=document.createElement('div');head.className='bar-heading';const name=document.createElement('span');name.textContent=item.name;const value=document.createElement('strong');value.textContent=item.value+' / 15';head.append(name,value);const track=document.createElement('div');track.className='track';track.setAttribute('aria-hidden','true');const fill=document.createElement('div');fill.className='fill';fill.style.width=(item.value/15*100)+'%';track.append(fill);row.append(head,track);$('profile').append(row);});
+ const sorted=[...result.scores].sort((a,b)=>b.value-a.value);const cutoff=sorted[1].value;const strongest=sorted.filter(s=>s.value>=cutoff);const minimum=sorted[6].value;const weakest=result.scores.filter(s=>s.value===minimum);if(sorted[0].value===minimum){$('strengths').textContent='Du schätzt alle sieben Bereiche gleich ein. Wähle selbst, welche Ressource dir aktuell besonders hilft.';$('development').textContent='Dein Ansatzpunkt: Wähle den Bereich, den du im Alltag als Nächstes stärken möchtest.';}else{$('strengths').textContent='Deine stärksten Bereiche (einschließlich Gleichständen): '+strongest.map(s=>s.name).join(', ')+'.';$('development').textContent='Mögliche Ansatzpunkte: '+weakest.map(s=>s.name).join(', ')+'.';}
+ show('result');window.scrollTo(0,0);$('resultTitle').focus();
+});
+$('print').onclick=()=>window.print();$('edit').onclick=()=>{show('check');document.querySelector('input').focus();};
+$('restart').onclick=()=>{if(!window.confirm('Alle Antworten löschen und neu beginnen?'))return;$('form').reset();document.querySelectorAll('.missing').forEach(el=>el.classList.remove('missing'));$('error').hidden=true;$('progress').value=0;$('progressText').textContent='0 von 21 Aussagen beantwortet';show('intro');window.scrollTo(0,0);$('start').focus();};
+</script>
+</body>
+</html>
